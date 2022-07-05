@@ -13,19 +13,19 @@ Description DOI: [bioRxiv](url)
 ## Data
 
 MATEdb version 1 comprises 423 species, 322 arthropods (57 genomes and 265 transcriptomes) and 101 molluscs (31 genomes and 70 transcriptomes). These species belong to at least 394 different genra which are included in at least 325 families which are grouped in 110 orders which are further grouped in 27 different classes. 8,909,233 proteins are included in the final dataset with eggNOG annotation for 6,308,716 of them. In the Data folder you can find the **MATEdb.txt** file which contains the metadata for all species in the database. 
-Columns Phylum, Subphylum, Class, Subclass, Superorder, Order, Family, Genus and Species_or_Subspecies use the describe the taxonomy of each species using the names from NCBI Taxonomy.
-NCBI_Taxonomy_ID refers to the id used by [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy).
-Code refers to a four letter code that was selected for each species followed by a number.	Genome_or_Transcriptome	refers to whether the data available for that species comes from a genome or a transcriptome.
-Sequencing_Technology refers to the sequencing technology used to generate the data.
-Database and Accession_Number refer to the database used to obtain the raw data and the accession number under which it is stored.
-Reference refers to the publication associated with the data used.
-Alternative_repository refers to additional information sources. 
-BUSCO_Database refers to the BUSCO dataset that was used to estimate the genome completeness.
-Trinity_C_plus_F, Trinity_C, Trinity_S, Trinity_D, Trinity_F and Trinity_M refer to the % of Complete plus Fragmented, Complete, Complete Single-copy, Complete Duplicated, Fragmented and Missing genes from the Trinity assembly.
-Filtered_C_plus_F, Filtered_C, Filtered_S, Filtered_D, Filtered_F and Filtered_M refer to the % of Complete plus Fragmented, Complete, Complete Single-copy, Complete Duplicated, Fragmented and Missing genes after filtering the Trinity assembly using BlobTools.
-Protein_Number refers to the final number of proteins after keeping only the longest isoform for each gene.
-C_plus_F, C, S, D, F and M refer to the % of Complete plus Fragmented, Complete, Complete Single-copy, Complete Duplicated, Fragmented and Missing genes after conserving only the longest isoform for each gene.
-Eggnog refers to the number of proteins that have a functional annotation obtained with eggNOG-mapper. 
+- Columns Phylum, Subphylum, Class, Subclass, Superorder, Order, Family, Genus and Species_or_Subspecies use the describe the taxonomy of each species using the names from NCBI Taxonomy.
+- NCBI_Taxonomy_ID refers to the id used by [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy).
+- Code refers to a four letter code that was selected for each species followed by a number.	Genome_or_Transcriptome	refers to whether the data available for that species comes from a genome or a transcriptome.
+- Sequencing_Technology refers to the sequencing technology used to generate the data.
+- Database and Accession_Number refer to the database used to obtain the raw data and the accession number under which it is stored.
+- Reference refers to the publication associated with the data used.
+- Alternative_repository refers to additional information sources. 
+- BUSCO_Database refers to the BUSCO dataset that was used to estimate the genome completeness.
+- Trinity_C_plus_F, Trinity_C, Trinity_S, Trinity_D, Trinity_F and Trinity_M refer to the % of Complete plus Fragmented, Complete, Complete Single-copy, Complete Duplicated, Fragmented and Missing genes from the Trinity assembly.
+- Filtered_C_plus_F, Filtered_C, Filtered_S, Filtered_D, Filtered_F and Filtered_M refer to the % of Complete plus Fragmented, Complete, Complete Single-copy, Complete Duplicated, Fragmented and Missing genes after filtering the Trinity assembly using BlobTools.
+- Protein_Number refers to the final number of proteins after keeping only the longest isoform for each gene.
+- C_plus_F, C, S, D, F and M refer to the % of Complete plus Fragmented, Complete, Complete Single-copy, Complete Duplicated, Fragmented and Missing genes after conserving only the longest isoform for each gene.
+- Eggnog refers to the number of proteins that have a functional annotation obtained with eggNOG-mapper. 
 
 
 ## Scripts
