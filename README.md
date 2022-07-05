@@ -33,6 +33,7 @@ MATEdb version 1 comprises 423 species, 322 arthropods (57 genomes and 265 trans
 We provide all the commands and scripts needed to download the raw data and process it to obtain all files in MATEdb.
 
 1.- Downloading the raw data
+
 Either directly from a browser, going to a data repository:
 - NCBI: https://www.ncbi.nlm.nih.gov
 - Figshare: https://figshare.com
@@ -47,6 +48,7 @@ fastq-dump --defline-seq '@$sn[_$rn]/$ri' --split-files $STORE/Craterostigmus_ta
 For more information see https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-dump
 
 2.- Quality check
+
 To remove the adapters, clean and filter the data we use fastp 0.20.1. 
 Example:
 ```
@@ -54,6 +56,7 @@ fastp --detect_adapter_for_pe -i $STORE/Craterostigmus_tasmanianus/SRR1157986/SR
 ```
 
 3.- Transcriptome assembly
+
 The transcriptomes were assembled using Trinity 2.11.0.
 Example:
 ```
@@ -61,6 +64,7 @@ Trinity --seqType fq --left $STORE/Craterostigmus_tasmanianus/SRR1157986/SRR1157
 ```
 
 4.- Change filenames and headers
+
 The name and the headers of the outputs of Trinity are modified using the following commands:
 Example:
 ```
@@ -71,6 +75,7 @@ sed 's/TRINITY/CTAS1/g; s/ .*//g' CTAS1.trinity.fasta > CTAS1.mod.trinity.fasta
 ```
 
 5.- Quality assessment of the assembly
+
 The quality of the assembly was assessed with BUSCO 4.1.4 and using the arthropoda_odb10 for Arthropods or the metazoa_odb10 for Molluscs.
 Example:
 ```
@@ -83,6 +88,7 @@ From these values we added that of C + F and if this sum is > 85% we considered 
 Note: the limit value of 85% was decided by our group.
 
 6.- Extract Open Reading Frames (ORFs)
+
 The ORFs from the transcriptome assembly were identified using TransDecoder 5.5.0.
 Example:
 ```
@@ -92,6 +98,7 @@ TransDecoder.Predict -t CTAS1.mod.trinity.fasta -T $((counts/4))
 ```
 
 7.- Elimination of foreign contaminant sequences
+
 The taxonomy of the sequences in the TransDecoder output files was determined using BlobTools 2.3.3 and sequences which did not belong to the expected taxonomical group were discarded.
 First DIAMOND 2.0.8 was used to compare against the nr database (!!! DOWNLOAD DATE? !!!).
 Example: 
@@ -105,9 +112,11 @@ blobtools filter --param bestsum_phylum--Keys="$PHYLA" --taxrule bestsum --fasta
 ```
 
 8.- BUSCO scores for the filtered sequences
+
 BUSCO scores were calculated, as previously mentioned, to assess the effects of the filtering by taxonomy.
 
 9.- Obtain the longest isoform for each gene
+
 The **fetch_longest_iso.py** script was used to obtain the longest isoform for each gene. 
 For the transcriptomes it is executed as follows:
 ```
@@ -122,9 +131,11 @@ $STORE/scripts/remove_isoforms_proteome.sh WORKSPACE SPECIES
 ```
 
 10.- BUSCO scores for longest isoforms
+
 BUSCO scores were calculated, as previously mentioned, to assess the effects of keeping only the longest isoform for each gene.
 
 11.- Annotate the longest isoforms using eggNOG-mapper 
+
 To annotate the longest isoforms we used eggNOG-mapper 2.1.6 against the eukaryota DIAMOND database (which can be downloaded using the download_eggnog_data.py script).
 Example:
 ```
