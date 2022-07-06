@@ -30,7 +30,7 @@ MATEdb version 1 comprises 423 species, 322 arthropods (57 genomes and 265 trans
 
 ## Scripts
 
-We provide all the commands and scripts needed to download the raw data and process it to obtain all files in MATEdb. Here you can see a diagram of the pipeline followed to generate the data in MATEdb followed by a detailed description of every step.
+We provide all the commands and scripts needed to download the raw data and process it to obtain all files in MATEdb. Here you can see a diagram of the pipeline used to generate the data in MATEdb followed by a detailed description of every step.
 
 ![Pipeline used to generate the data in MATEdb](/Figures/MATEdb_Pipeline.png)
 
@@ -102,7 +102,7 @@ TransDecoder.Predict -t CTAS1.mod.trinity.fasta -T $((counts/4))
 7.- Elimination of foreign contaminant sequences
 
 The taxonomy of the sequences in the TransDecoder output files was determined using BlobTools 2.3.3 and sequences which did not belong to the expected taxonomical group were discarded.
-First DIAMOND 2.0.8 was used to compare against the nr database (!!! DOWNLOAD DATE? !!!).
+First DIAMOND 2.0.8 was used to compare against the nr database which was downloaded in December 2020 from NCBI.
 Example: 
 ```
 diamond blastp --query CTAS1.mod.trinity.fasta.transdecoder.pep --db nr.dmnd --sensitive --max-target-seqs 1 --evalue 1e-10 --threads 24 --outfmt 6 qseqid staxids bitscore qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore --out CTAS1.diamond.blastp.out
