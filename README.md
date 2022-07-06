@@ -42,7 +42,6 @@ Either directly from a browser, going to a data repository:
 - etc...
 
 Or using the SRA Toolkit version 2.10.7.
-Example:
 ``` 
 prefetch SRR1157986
 fastq-dump --defline-seq '@$sn[_$rn]/$ri' --split-files $STORE/Craterostigmus_tasmanianus/SRR1157986 -O $STORE/Craterostigmus_tasmanianus/SRR1157986
@@ -52,7 +51,6 @@ For more information see https://github.com/ncbi/sra-tools/wiki/HowTo:-fasterq-d
 2.- Quality check
 
 To remove the adapters, clean and filter the data we use fastp 0.20.1. 
-Example:
 ```
 fastp --detect_adapter_for_pe -i $STORE/Craterostigmus_tasmanianus/SRR1157986/SRR1157986_1.fastq -o $STORE/Craterostigmus_tasmanianus/SRR1157986/SRR1157986_1_trimmed.fastq -I $STORE/Craterostigmus_tasmanianus/SRR1157986/SRR1157986_2.fastq -O $STORE/Craterostigmus_tasmanianus/SRR1157986/SRR1157986_2_trimmed.fastq
 ```
@@ -60,7 +58,6 @@ fastp --detect_adapter_for_pe -i $STORE/Craterostigmus_tasmanianus/SRR1157986/SR
 3.- Transcriptome assembly
 
 The transcriptomes were assembled using Trinity 2.11.0.
-Example:
 ```
 Trinity --seqType fq --left $STORE/Craterostigmus_tasmanianus/SRR1157986/SRR1157986_1_trimmed.fastq --right $STORE/Craterostigmus_tasmanianus/SRR1157986/SRR1157986_2_trimmed.fastq --CPU 24 --max_memory 48G --output trinity --monitoring --no_parallel_norm_stats --full_cleanup --no_version_check
 ```
@@ -68,7 +65,6 @@ Trinity --seqType fq --left $STORE/Craterostigmus_tasmanianus/SRR1157986/SRR1157
 4.- Change filenames and headers
 
 The name and the headers of the outputs of Trinity are modified using the following commands:
-Example:
 ```
 mv trinity.Trinity.fasta CTAS1.trinity.fasta
 grep ">" CTAS1.trinity.fasta | sed 's/>//g' > original_headings_CTAS1.txt
@@ -79,7 +75,6 @@ sed 's/TRINITY/CTAS1/g; s/ .*//g' CTAS1.trinity.fasta > CTAS1.mod.trinity.fasta
 5.- Quality assessment of the assembly
 
 The quality of the assembly was assessed with BUSCO 4.1.4 and using the arthropoda_odb10 for Arthropods or the metazoa_odb10 for Molluscs.
-Example:
 ```
 busco -i CTAS1.mod.trinity.fasta -l arthropoda_odb10 -o Busco -m transcriptome
 ```
@@ -92,7 +87,6 @@ Note: the limit value of 85% was decided by our group.
 6.- Extract Open Reading Frames (ORFs)
 
 The ORFs from the transcriptome assembly were identified using TransDecoder 5.5.0.
-Example:
 ```
 TransDecoder.LongOrfs -t CTAS1.mod.trinity.fasta
 counts=$(grep -c '>' CTAS1.mod.trinity.fasta.transdecoder_dir/longest_orfs.pep)
@@ -101,9 +95,7 @@ TransDecoder.Predict -t CTAS1.mod.trinity.fasta -T $((counts/4))
 
 7.- Elimination of foreign contaminant sequences
 
-The taxonomy of the sequences in the TransDecoder output files was determined using BlobTools 2.3.3 and sequences which did not belong to the expected taxonomical group were discarded.
-First DIAMOND 2.0.8 was used to compare against the nr database which was downloaded in December 2020 from NCBI.
-Example: 
+The taxonomy of the sequences in the TransDecoder output files was determined using BlobTools 2.3.3 and sequences which did not belong to the expected taxonomical group were discarded. First DIAMOND 2.0.8 was used to compare against the nr database which was downloaded in December 2020 from NCBI.
 ```
 diamond blastp --query CTAS1.mod.trinity.fasta.transdecoder.pep --db nr.dmnd --sensitive --max-target-seqs 1 --evalue 1e-10 --threads 24 --outfmt 6 qseqid staxids bitscore qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore --out CTAS1.diamond.blastp.out
 blobtools create --fasta CTAS1.mod.trinity.fasta.transdecoder.cds --hits CTAS1.diamond.blastp.out --hits-cols 1=qseqid,2=staxids,3=bitscore,5=sseqid,10=sstart,11=send,14=evalue --taxrule bestsum --taxdump $STORE/software/taxdump BlobDir
@@ -129,7 +121,7 @@ For the genomes:
 First you need to download the matching annotation file in gff format for each genome. Then the **remove_isoforms_proteome.sh** script should be executed. Keep in mind that each annotation file is unique and the format may not match. In these cases, you have to modify the script accordingly after manually reviewing the gff file, the fasta and it is also useful to look at the geneprot.txt that we get when executing the script. By default, the script considers the structure of most gff files downloaded from NCBI.
 
 ```
-$STORE/scripts/remove_isoforms_proteome.sh WORKSPACE SPECIES
+$STORE/scripts/remove_isoforms_proteome.sh -g species.gff -f species.aa.fasta -s SPEC1
 ```
 
 10.- BUSCO scores for longest isoforms
@@ -139,7 +131,6 @@ BUSCO scores were calculated, as previously mentioned, to assess the effects of 
 11.- Annotate the longest isoforms using eggNOG-mapper 
 
 To annotate the longest isoforms we used eggNOG-mapper 2.1.6 against the eukaryota DIAMOND database (which can be downloaded using the download_eggnog_data.py script).
-Example:
 ```
 emapper.py -i CTAS1.longiso.pep -o CTAS1 --itype proteins --matrix BLOSUM62 --dmnd_db Eukaryota.dmnd --cpu 18 --dbmem --go_evidence all --output_dir results
 ```
