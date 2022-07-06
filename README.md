@@ -30,7 +30,7 @@ MATEdb version 1 comprises 423 species, 322 arthropods (57 genomes and 265 trans
 
 ## Scripts
 
-We provide all the commands and scripts needed to download the raw data and process it to obtain all files in MATEdb. Here you can see a diagram of the pipeline followed to generate the data in MATEdb as well as a detailed description of every step.
+We provide all the commands and scripts needed to download the raw data and process it to obtain all files in MATEdb. Here you can see a diagram of the pipeline followed to generate the data in MATEdb followed by a detailed description of every step.
 
 ![Pipeline used to generate the data in MATEdb](/Figures/MATEdb_Pipeline.png)
 
