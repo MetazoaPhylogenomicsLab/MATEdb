@@ -10,6 +10,10 @@ Database DOI: [FigShare](https://doi.org/10.6084/m9.figshare.20178800.v1)
 
 Description DOI: [bioRxiv](url)
 
+## How to cite the data repository
+
+Fernández, Rosa; Tonzo, Vanina; Simón Guerrero, Carolina; Lozano-Fernandez, Jesus ; Martínez-Redondo, Gemma I.; Balart-García, Pau; Aristide, Leandro; Eleftheriadi, Klara; Vargas-Chávez, Carlos (2022). MATEdb, a data repository of high quality metazoan transcriptome assemblies to accelerate phylogenomic studies. bioRxiv XXX.
+
 ## Data
 
 MATEdb version 1 comprises 423 species, 322 arthropods (57 genomes and 265 transcriptomes) and 101 molluscs (31 genomes and 70 transcriptomes). These species belong to at least 394 different genra which are included in at least 325 families which are grouped in 110 orders which are further grouped in 27 different classes. 8,909,233 proteins are included in the final dataset with eggNOG annotation for 6,308,716 of them. In the Data folder you can find the **MATEdb.txt** file which contains the metadata for all species in the database. 
@@ -98,11 +102,11 @@ TransDecoder.Predict -t CTAS1.mod.trinity.fasta -T $((counts/4))
 The taxonomy of the sequences in the TransDecoder output files was determined using BlobTools 2.3.3 and sequences which did not belong to the expected taxonomical group were discarded. First DIAMOND 2.0.8 was used to compare against the nr database which was downloaded in December 2020 from NCBI.
 ```
 diamond blastp --query CTAS1.mod.trinity.fasta.transdecoder.pep --db nr.dmnd --sensitive --max-target-seqs 1 --evalue 1e-10 --threads 24 --outfmt 6 qseqid staxids bitscore qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore --out CTAS1.diamond.blastp.out
-blobtools create --fasta CTAS1.mod.trinity.fasta.transdecoder.cds --hits CTAS1.diamond.blastp.out --hits-cols 1=qseqid,2=staxids,3=bitscore,5=sseqid,10=sstart,11=send,14=evalue --taxrule bestsum --taxdump $STORE/software/taxdump BlobDir
-python $STORE/scripts/extract_phyla_for_blobtools.py BlobDir/bestsum_phylum.json | sed "s/', '/,/g" | tr -d "[]'" > contaminants.txt
-PHYLA=$(cat $WORKSPACE/BLOBTOOLS/contaminants.txt)
-blobtools filter --param bestsum_phylum--Keys="$PHYLA" --taxrule bestsum --fasta CTAS1.transdecoder.cds --summary STDOUT --summary-rank kingdom BlobDir >CTAS1.blobtools.summary
-blobtools filter --param bestsum_phylum--Keys="$PHYLA" --taxrule bestsum --fasta CTAS1.transdecoder.pep BlobDir
+blobtools create --fasta CTAS1.mod.trinity.fasta.transdecoder.cds --hits CTAS1.diamond.blastp.out --hits-cols 1=qseqid,2=staxids,3=bitscore,5=sseqid,10=sstart,11=send,14=evalue --taxrule bestsum --taxdump taxdump BlobDir
+python extract_phyla_for_blobtools.py BlobDir/bestsum_phylum.json | sed "s/', '/,/g" | tr -d "[]'" > contaminants.txt
+PHYLA=$(cat contaminants.txt)
+blobtools filter --param bestsum_phylum--Keys="$PHYLA" --taxrule bestsum --fasta CTAS1.mod.trinity.fasta.transdecoder.cds --summary STDOUT --summary-rank kingdom BlobDir >CTAS1.blobtools.summary
+blobtools filter --param bestsum_phylum--Keys="$PHYLA" --taxrule bestsum --fasta CTAS1.mod.trinity.fasta.transdecoder.pep BlobDir
 ```
 
 8.- BUSCO scores for the filtered sequences
@@ -114,14 +118,14 @@ BUSCO scores were calculated, as previously mentioned, to assess the effects of 
 The **fetch_longest_iso.py** script was used to obtain the longest isoform for each gene. 
 For the transcriptomes it is executed as follows:
 ```
-python $STORE/scripts/fetch_longest_iso.py -i CTAS1.transdecoder.pep -o CTAS1.longiso.pep -t -l
+python2.7 fetch_longest_iso.py -i CTAS1.mod.trinity.fasta.transdecoder.filtered.pep -o CTAS1.longiso.pep -t -l
 ```
 
 For the genomes: 
 First you need to download the matching annotation file in gff format for each genome. Then the **remove_isoforms_proteome.sh** script should be executed. Keep in mind that each annotation file is unique and the format may not match. In these cases, you have to modify the script accordingly after manually reviewing the gff file, the fasta and it is also useful to look at the geneprot.txt that we get when executing the script. By default, the script considers the structure of most gff files downloaded from NCBI.
 
 ```
-$STORE/scripts/remove_isoforms_proteome.sh -g species.gff -f species.aa.fasta -s SPEC1
+remove_isoforms_proteome.sh -g species.gff -f species.aa.fasta -s SPEC1
 ```
 
 10.- BUSCO scores for longest isoforms
