@@ -16,7 +16,7 @@ Fernández, Rosa; Tonzo, Vanina; Simón Guerrero, Carolina; Lozano-Fernandez, Je
 
 ## Data
 
-MATEdb version 1 comprises 423 species, 322 arthropods (57 genomes and 265 transcriptomes) and 101 molluscs (31 genomes and 70 transcriptomes). These species belong to at least 394 different genra which are included in at least 325 families which are grouped in 110 orders which are further grouped in 27 different classes. 8,909,233 proteins are included in the final dataset with eggNOG annotation for 6,308,716 of them. In the Data folder you can find the **MATEdb.txt** file which contains the metadata for all species in the database. 
+MATEdb version 1 comprises 423 species, 322 arthropods (57 genomes and 265 transcriptomes) and 101 molluscs (31 genomes and 70 transcriptomes). These species belong to at least 394 different genra which are included in at least 325 families which are grouped in 110 orders which are further grouped in 27 different classes. 8,909,233 proteins are included in the final dataset with eggNOG annotation for 6,308,716 of them. In the Data folder you can find the **Table_S1.txt** file which contains the metadata for all species in the database. 
 - Columns Phylum, Subphylum, Class, Subclass, Superorder, Order, Family, Genus and Species_or_Subspecies use the describe the taxonomy of each species using the names from NCBI Taxonomy.
 - NCBI_Taxonomy_ID refers to the id used by [NCBI Taxonomy](https://www.ncbi.nlm.nih.gov/taxonomy).
 - Code refers to a four letter code that was selected for each species followed by a number.	Genome_or_Transcriptome	refers to whether the data available for that species comes from a genome or a transcriptome.
@@ -34,7 +34,7 @@ MATEdb version 1 comprises 423 species, 322 arthropods (57 genomes and 265 trans
 
 ## Scripts
 
-We provide all the commands and scripts needed to download the raw data and process it to obtain all files in MATEdb. Here you can see a diagram of the pipeline used to generate the data in MATEdb followed by a detailed description of every step.
+We provide all the commands and scripts needed to download the raw data and process it to obtain all files in MATEdb. Here you can see a diagram of the pipeline used to generate the data in MATEdb followed by a detailed description of every step. Software versions and parameters are summarized in the **Table_S2.xlsx** table in the Data folder.
 
 ![Pipeline used to generate the data in MATEdb](/Figures/MATEdb_Pipeline.png)
 
