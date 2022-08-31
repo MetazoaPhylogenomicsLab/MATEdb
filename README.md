@@ -34,7 +34,7 @@ MATEdb version 1 comprises 423 species, 322 arthropods (57 genomes and 265 trans
 
 ## Wetlab protocol
 
-We provide the protocol followed for the sample preparation, RNA isolation, library preparation and RNA sequencing procedures for newly generated samples in the Protocols folder.
+We provide the protocol followed for the sample preparation, RNA isolation, library preparation and RNA sequencing procedures for newly generated samples in the **Suppl_File_S1_wet_lab_protocol_new_samples.pdf** file in the Protocols folder.
 
 
 ## Scripts
