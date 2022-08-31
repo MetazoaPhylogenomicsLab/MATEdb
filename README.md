@@ -32,6 +32,11 @@ MATEdb version 1 comprises 423 species, 322 arthropods (57 genomes and 265 trans
 - Eggnog refers to the number of proteins that have a functional annotation obtained with eggNOG-mapper. 
 
 
+## Wetlab protocol
+
+We provide the protocol followed for the sample preparation, RNA isolation, library preparation and RNA sequencing procedures for newly generated samples in the Protocols folder.
+
+
 ## Scripts
 
 We provide all the commands and scripts needed to download the raw data and process it to obtain all files in MATEdb. Here you can see a diagram of the pipeline used to generate the data in MATEdb followed by a detailed description of every step. Software versions and parameters are summarized in the **Table_S2.xlsx** table in the Data folder.
