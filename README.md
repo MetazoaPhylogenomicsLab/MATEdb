@@ -8,11 +8,11 @@ MATEdb (Metazoan Assemblies from Transcriptomic Ensembles) is a curated database
 
 Database DOI: [FigShare](https://doi.org/10.6084/m9.figshare.20178800.v1)
 
-Description DOI: [bioRxiv](url)
+Description DOI: [bioRxiv](https://doi.org/10.1101/2022.07.18.500182)
 
 ## How to cite the data repository
 
-Fernández, Rosa; Tonzo, Vanina; Simón Guerrero, Carolina; Lozano-Fernandez, Jesus ; Martínez-Redondo, Gemma I.; Balart-García, Pau; Aristide, Leandro; Eleftheriadi, Klara; Vargas-Chávez, Carlos (2022). MATEdb, a data repository of high quality metazoan transcriptome assemblies to accelerate phylogenomic studies. bioRxiv XXX.
+Fernández, Rosa; Tonzo, Vanina; Simón Guerrero, Carolina; Lozano-Fernandez, Jesus ; Martínez-Redondo, Gemma I.; Balart-García, Pau; Aristide, Leandro; Eleftheriadi, Klara; Vargas-Chávez, Carlos (2022). MATEdb, a data repository of high quality metazoan transcriptome assemblies to accelerate phylogenomic studies. bioRxiv https://doi.org/10.1101/2022.07.18.500182.
 
 ## Data
 
@@ -30,6 +30,11 @@ MATEdb version 1 comprises 423 species, 322 arthropods (57 genomes and 265 trans
 - Protein_Number refers to the final number of proteins after keeping only the longest isoform for each gene.
 - C_plus_F, C, S, D, F and M refer to the % of Complete plus Fragmented, Complete, Complete Single-copy, Complete Duplicated, Fragmented and Missing genes after conserving only the longest isoform for each gene.
 - Eggnog refers to the number of proteins that have a functional annotation obtained with eggNOG-mapper. 
+
+
+## Wetlab protocol
+
+We provide the protocol followed for the sample preparation, RNA isolation, library preparation and RNA sequencing procedures for newly generated samples in the **Suppl_File_S1_wet_lab_protocol_new_samples.pdf** file in the Protocols folder.
 
 
 ## Scripts
