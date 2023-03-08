@@ -6,13 +6,13 @@ MATEdb (Metazoan Assemblies from Transcriptomic Ensembles) is a curated database
 
 ![Tree showing the diversity comprised in MATEdb](/Figures/MATEdb_Tree_v1.png)
 
-Database DOI: [FigShare](https://doi.org/10.6084/m9.figshare.20178800.v1)
+Database: [FigShare](https://doi.org/10.6084/m9.figshare.20178800.v1)
 
-Description DOI: [bioRxiv](https://doi.org/10.1101/2022.07.18.500182)
+Description: [Peer Community Journal](https://doi.org/10.24072/pcjournal.177)
 
 ## How to cite the data repository
 
-Fernández, Rosa; Tonzo, Vanina; Simón Guerrero, Carolina; Lozano-Fernandez, Jesus ; Martínez-Redondo, Gemma I.; Balart-García, Pau; Aristide, Leandro; Eleftheriadi, Klara; Vargas-Chávez, Carlos (2022). MATEdb, a data repository of high quality metazoan transcriptome assemblies to accelerate phylogenomic studies. bioRxiv https://doi.org/10.1101/2022.07.18.500182.
+Fernández, Rosa; Tonzo, Vanina; Simón Guerrero, Carolina; Lozano-Fernandez, Jesus; Martínez-Redondo, Gemma I.; Balart-García, Pau; Aristide, Leandro; Eleftheriadi, Klara; Vargas-Chávez, Carlos. MATEdb, a data repository of high-quality metazoan transcriptome assemblies to accelerate phylogenomic studies. Peer Community Journal, Volume 2 (2022), article no. e58. doi : 10.24072/pcjournal.177. https://peercommunityjournal.org/articles/10.24072/pcjournal.177/
 
 ## Data
 
